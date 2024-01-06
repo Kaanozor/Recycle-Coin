@@ -1,0 +1,47 @@
+@model OperatorViewModel
+
+@{
+    ViewData["Title"] = "Operator";
+}
+@section Scripts{
+    <script src="~/js/operator.js"></script>
+}
+@section Nav { <li><button class="btn btn-secondary">Sign Out</button></li> }
+
+<section class="d-flex flex-column justify-content-center align-items-center" style="min-height: 75vh;">
+    <form class="col-6 mx-auto mb-5">
+        <div class="input-group">
+            <select class="form-select" id="productSelect">
+                <option disabled selected>Choose product...</option>
+
+                @foreach(var product in Model.Products)
+                {
+                    <option value="@product.Id" data-carbon="@product.Carbon">@product.TypeName</option>
+                }
+               
+            </select>
+            <input class="form-control" style="flex: .2" type="number" id="Quantity" value="0" placeholder="Quantity...">
+            <button id="addBtn" class="btn btn-secondary" type="button">Add</button>
+        </div>
+    </form>
+    <div class="col-4 mx-auto text-center d-flex align-items-center mb-4">
+        <div class="col-5">
+            <h5 class="mb-3"><u style="text-underline-offset: 6px">Total Carbon</u></h5>
+            <h5 id="totalCarbon">0</h5>
+        </div>
+        <div class="col-2">
+            <h5>=</h5>
+        </div>
+        <div class="col-5">
+            <h5 class="mb-3"><u style="text-underline-offset: 6px">Total Recycle</u></h5>
+            <h5 id="totalRecycle">0</h5>
+        </div>
+    </div>
+    <div class="col-6 mx-auto">
+        <fieldset class="input-group align-items-center">
+            <label class="input-group-text" for="publicKey d-block">Send to</label>
+            <input class="form-control" type="text" id="publicKey" placeholder="Public key...">
+            <button id="sendBtn" class="btn btn-primary">Send</button>
+        </fieldset>
+    </div>
+</section>

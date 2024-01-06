@@ -1,0 +1,23 @@
+@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+@section Nav { 
+    <li><a class="nav-link text-dark" asp-controller="Auth" asp-action="Register">Register</a></li>
+}
+
+<section class="d-flex justify-content-center align-items-center" style="min-height: 75vh;">
+    <form method="post" class="col-3 border p-4 rounded">
+        <div class="mb-3">
+            <label for="loginEmail" class="form-label">Email address</label>
+            <input type="email" class="form-control" asp-for="Mail">
+        </div>
+        <div class="mb-3">
+            <label for="loginPassword" class="form-label">Password</label>
+            <input type="password" class="form-control" asp-for="Password">
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</section>

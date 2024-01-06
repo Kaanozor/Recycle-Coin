@@ -1,0 +1,68 @@
+@model UserViewModel
+
+@{
+    ViewData["Title"] = "User";
+}
+
+@section Scripts{
+    <script src="~/js/Transaction.js"></script>
+}
+
+@section Nav { <li><a href="@Url.Action("LogOut","Auth")" class="btn btn-secondary">Sign Out</a></li> }
+<section style="min-height: 75vh; display: grid; align-items: center">
+    <input id="publicKey"  type="hidden" value="@Model.PublicKey" />
+    <div class="row gx-5">
+        <article class="col-lg-6">
+            <div class="mb-3">
+                <h6>This is your address</h6>
+                <h5 class="d-flex align-items-center">
+                    <span class="text-truncate">ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad</span>
+                    <button type="button" class="btn p-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    </button>
+                </h5>
+            </div>
+            <div>
+                <h6>This is your balance</h6>
+                <h5>@Model.Amount</h5>
+            </div>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Show private key
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <span>@Model.PublicKey</span>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Copy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    
+        <div class="col-lg-6">
+            <h2>Send Recycle</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="recipientAddress">Recipient address</label>
+                    <input type="text" class="form-control" id="recipientAddress" placeholder="Recipient address">
+                </div>
+                <div class="mb-3">
+                    <label for="amount">Amount</label>
+                    <input type="number" class="form-control" id="amount" placeholder="Amount">
+                </div>
+                <button id="sendBtn" type="submit" class="btn btn-dark">Send</button>
+            </form>
+        </div>
+    </div>
+</section>

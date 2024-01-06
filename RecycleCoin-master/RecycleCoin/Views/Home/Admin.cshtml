@@ -1,0 +1,67 @@
+@model AdminViewModel
+
+@{
+    ViewData["Title"] = "Admin";
+}
+
+@section Nav { <li><button class="btn btn-secondary">Sign Out</button></li> }
+
+<section>
+    <div class="d-block mb-4">
+        <a href="/Auth/Register" class="btn btn-success" type="button">Add operator</a>
+    </div>
+    <form method="post" class="col-6 d-flex mb-5" style="gap: 1rem; align-items: end;">
+        <div class="">
+            <label class="form-label" for="productType">Type</label>
+            <input class="form-control" id="productType" type="text" placeholder="Type" asp-for="TypeName">
+        </div>
+        <div class="">
+            <label class="form-label" for="carbonValue">Carbon value</label>
+            <input class="form-control" id="carbonValue" type="number" value="0" placeholder="Carbon value" asp-for="Carbon">
+        </div>
+        <button class="btn btn-success" style="white-space: nowrap"><b>+</b> Add Product</button>
+    </form>
+    <table class="table table-bordered table-hover table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Product</th>
+                <th>Type</th>
+                <th>Carbon value</th>
+                <th>Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Product 1</td>
+                <td>Type 1</td>
+                <td>300</td>
+                <td>
+                    <button class="btn btn-warning" type="button">Edit</button>
+                    <button class="btn btn-danger" type="button">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Product 2</td>
+                <td>Type 2</td>
+                <td>500</td>
+                <td>
+                    <button class="btn btn-warning" type="button">Edit</button>
+                    <button class="btn btn-danger" type="button">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Product 3</td>
+                <td>Type 3</td>
+                <td>1500</td>
+                <td>
+                    <button class="btn btn-warning" type="button">Edit</button>
+                    <button class="btn btn-danger" type="button">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
